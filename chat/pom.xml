@@ -6,9 +6,8 @@
         <artifactId>intouch</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>user</artifactId>
-    <name>Archetype - user</name>
+    <artifactId>chat</artifactId>
+    <name>Archetype - chat</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -105,12 +104,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring-boot-starter-security.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
@@ -124,5 +117,4 @@
         </dependency>
 
     </dependencies>
-
 </project>
