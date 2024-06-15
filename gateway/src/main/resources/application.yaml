@@ -1,4 +1,26 @@
+jwt:
+  auth:
+    converter:
+      resource-id: intouch-client
+      principal-attribute: preferred_username
+
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8181/realms/IntouchRealm
+          jwk-set-uri: http://localhost:8181/realms/IntouchRealm/protocol/openid-connect/certs
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8181/realms/IntouchRealm
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: intouch-client
+            client-secret: 36MBU5jcg7Gvt9r7T5ibxiWQQSwpJ3B6
+            scope: openid
   application:
     name: api-gateway
   cloud:
@@ -10,12 +32,16 @@ spring:
             - Path=/post/**
           filters:
             - StripPrefix=1
+            - TokenRelay=
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-
 server:
   port: 8080
+
+logging:
+  level:
+    org.springframework.security: TRACE
